@@ -8,9 +8,9 @@ import { ListView } from "./ListView";
 import { TableView } from "./TableView";
 
 // Constants
-const API_ENDPOINT = process.env.NODE_ENV === 'development'
+const API_URL = process.env.NODE_ENV === 'development'
   ? "https://wcz3qr33kmjvzotdqt65efniv40kokon.lambda-url.us-east-2.on.aws"
-  : "/api/proxy"; // Using the proxy endpoint in production
+  : "/api/proxy";
 const TIMEOUT_DURATION = 5000;
 
 //Type definations
@@ -60,7 +60,7 @@ const FruitList: React.FC<FruitListProps> = ({
       setError(null);
   
       try {
-        const response = await axios.get(API_ENDPOINT, {
+        const response = await axios.get(API_URL, {
           timeout: TIMEOUT_DURATION,
           headers: {
             'Accept': 'application/json',
@@ -169,7 +169,7 @@ const FruitList: React.FC<FruitListProps> = ({
       </div>
     );
   }
-  
+
   return (
     <div className="h-full flex flex-col overflow-hidden">
 
