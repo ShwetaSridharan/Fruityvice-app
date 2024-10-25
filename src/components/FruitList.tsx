@@ -58,13 +58,18 @@ const FruitList: React.FC<FruitListProps> = ({
     const fetchData = async () => {
       setIsLoading(true);
       setError(null);
-
+  
       try {
         const response = await axios.get(API_ENDPOINT, {
           timeout: TIMEOUT_DURATION,
           headers: {
-            'Accept': 'application/json'
-          }
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          // Add withCredentials only for production
+          ...(process.env.NODE_ENV === 'production' && {
+            withCredentials: true
+          })
         });
       
         if (response.status === 200) {
@@ -79,20 +84,18 @@ const FruitList: React.FC<FruitListProps> = ({
           } else if (!error.response) {
             setError("Network error. Please check your connection.");
           } else {
-            setError(
-              `Failed to fetch fruits: ${
-                error.response?.data?.message || "Unknown error"
-              }`
-            );
+            setError(`Failed to fetch fruits: ${error.response?.data?.error || "Unknown error"}`);
           }
+          console.error('API Error:', error.response?.data || error.message);
         } else {
           setError("An unexpected error occurred.");
+          console.error('Unexpected Error:', error);
         }
       } finally {
         setIsLoading(false);
       }
     };
-
+  
     fetchData();
   }, [retryCount]);
 
@@ -123,7 +126,7 @@ const FruitList: React.FC<FruitListProps> = ({
     }));
   };
 
- //consitional rendering and error loading
+ //conditional rendering and error loading
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-full p-8">
@@ -150,6 +153,11 @@ const FruitList: React.FC<FruitListProps> = ({
             />
           </svg>
           <p className="text-lg font-medium">{error}</p>
+          <p className="text-sm text-stone-500 mt-2">
+            {process.env.NODE_ENV === 'development' 
+              ? 'Check the console for more details' 
+              : 'Please try again later'}
+          </p>
         </div>
         <button
           onClick={handleRetry}
@@ -161,7 +169,7 @@ const FruitList: React.FC<FruitListProps> = ({
       </div>
     );
   }
-
+  
   return (
     <div className="h-full flex flex-col overflow-hidden">
 
