@@ -8,7 +8,7 @@ import { ListView } from "./ListView";
 import { TableView } from "./TableView";
 
 // Constants
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || "/api";
+const API_ENDPOINT = "https://wcz3qr33kmjvzotdqt65efniv40kokon.lambda-url.us-east-2.on.aws";
 const TIMEOUT_DURATION = 5000;
 
 //Type definations
@@ -61,15 +61,17 @@ const FruitList: React.FC<FruitListProps> = ({
         const response = await axios.get(API_ENDPOINT, {
           timeout: TIMEOUT_DURATION,
           headers: {
-            Accept: "application/json",
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
           },
         });
-
+      
         if (response.status === 200) {
           setFruits(response.data);
         } else {
           throw new Error(`Server responded with status: ${response.status}`);
         }
+      
       } catch (error) {
         if (axios.isAxiosError(error)) {
           if (error.code === "ECONNABORTED") {
