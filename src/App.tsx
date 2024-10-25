@@ -88,6 +88,7 @@ const App: React.FC = () => {
                     }
                   }}
                   styles={selectStyles}
+                  
                   className="w-full"
                 />
               </div>
