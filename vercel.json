@@ -1,22 +1,26 @@
 {
     "version": 2,
-    "headers": [
+    "builds": [
       {
-        "source": "/(.*)",
-        "headers": [
-          {
-            "key": "Access-Control-Allow-Origin",
-            "value": "*"
-          },
-          {
-            "key": "Access-Control-Allow-Methods",
-            "value": "GET"
-          },
-          {
-            "key": "Access-Control-Allow-Headers",
-            "value": "X-Requested-With, Accept, Content-Type"
-          }
-        ]
+        "src": "package.json",
+        "use": "@vercel/static-build",
+        "config": { "distDir": "build" }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "headers": { "cache-control": "public, max-age=31536000, immutable" },
+        "dest": "/static/$1"
+      },
+      {
+        "src": "/(.*)",
+        "headers": {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, OPTIONS",
+          "Access-Control-Allow-Headers": "X-Requested-With, Accept, Content-Type"
+        },
+        "dest": "/index.html"
       }
     ]
   }
