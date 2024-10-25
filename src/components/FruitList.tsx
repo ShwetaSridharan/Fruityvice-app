@@ -61,9 +61,8 @@ const FruitList: React.FC<FruitListProps> = ({
         const response = await axios.get(API_ENDPOINT, {
           timeout: TIMEOUT_DURATION,
           headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
+            'Accept': 'application/json'
+          }
         });
       
         if (response.status === 200) {
@@ -71,7 +70,6 @@ const FruitList: React.FC<FruitListProps> = ({
         } else {
           throw new Error(`Server responded with status: ${response.status}`);
         }
-      
       } catch (error) {
         if (axios.isAxiosError(error)) {
           if (error.code === "ECONNABORTED") {
