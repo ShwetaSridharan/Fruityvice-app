@@ -84,13 +84,13 @@ export const TableView: React.FC<TableViewProps> = ({
                       {fruit.name}
                     </td>
                     <td className="px-4 py-4 text-sm font-medium text-black">
-                      {fruit.Family}
+                      {fruit.family}
                     </td>
                     <td className="px-4 py-4 text-sm font-medium text-black">
-                      {fruit.Order}
+                      {fruit.order}
                     </td>
                     <td className="px-4 py-4 text-sm font-medium text-black">
-                      {fruit.Genus}
+                      {fruit.genus}
                     </td>
                     <td className="px-4 py-4 text-sm font-medium text-black">
                       {fruit.nutritions.calories}
@@ -195,13 +195,13 @@ export const TableView: React.FC<TableViewProps> = ({
                           {fruit.name}
                         </td>
                         <td className="px-4 py-4 text-sm font-medium text-black">
-                          {fruit.Family}
+                          {fruit.family}
                         </td>
                         <td className="px-4 py-4 text-sm font-medium text-black">
-                          {fruit.Order}
+                          {fruit.order}
                         </td>
                         <td className="px-4 py-4 text-sm font-medium text-black">
-                          {fruit.Genus}
+                          {fruit.genus}
                         </td>
                         <td className="px-4 py-4 text-sm font-medium text-black">
                           {fruit.nutritions.calories}

@@ -1,9 +1,9 @@
 export interface Fruit {
     name: string;
     id: number;
-    Family: string;
-    Order: string;
-    Genus: string;
+    family: string;
+    order: string;
+    genus: string;
     nutritions: {
       calories: number;
       fat: number;

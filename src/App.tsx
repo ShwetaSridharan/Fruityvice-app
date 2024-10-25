@@ -77,9 +77,9 @@ const App: React.FC = () => {
                   id="groupBySelect"
                   options={[
                     { value: "None", label: "None" },
-                    { value: "Family", label: "Family" },
-                    { value: "Order", label: "Order" },
-                    { value: "Genus", label: "Genus" },
+                    { value: "family", label: "family" },
+                    { value: "order", label: "order" },
+                    { value: "genus", label: "genus" },
                   ]}
                   value={{ value: groupBy, label: groupBy }}
                   onChange={(selectedOption) => {

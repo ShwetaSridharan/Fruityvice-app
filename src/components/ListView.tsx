@@ -82,7 +82,7 @@ export const ListView: React.FC<ListViewProps> = ({
                   </div>
                   <button
                     className="px-3 py-1.5 bg-stone-300 text-black font-bold
-                             rounded-lg transition-all duration-200 active:scale-95 text-xs md:text-sm hover:bg-stone-400
+                             rounded-lg transition-all duration-200 active:scale-95 text-xs md:text-sm  hover:bg-stone-400
                              whitespace-nowrap ml-4"
                     onClick={() => onAddFruit(fruit)}
                   >

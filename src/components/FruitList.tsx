@@ -100,7 +100,9 @@ const FruitList: React.FC<FruitListProps> = ({
     () =>
       groupBy !== "None"
         ? fruits.reduce((acc: Record<string, Fruit[]>, fruit) => {
-            const key = fruit[groupBy as keyof Fruit] as string;
+            // Get the property value and capitalize first letter
+            const propertyValue = fruit[groupBy.toLowerCase() as keyof Fruit] as string;
+            const key = propertyValue.charAt(0).toUpperCase() + propertyValue.slice(1);
             acc[key] = [...(acc[key] || []), fruit];
             return acc;
           }, {})
