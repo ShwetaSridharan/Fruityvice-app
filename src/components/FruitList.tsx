@@ -8,7 +8,9 @@ import { ListView } from "./ListView";
 import { TableView } from "./TableView";
 
 // Constants
-const API_ENDPOINT = "https://wcz3qr33kmjvzotdqt65efniv40kokon.lambda-url.us-east-2.on.aws";
+const API_ENDPOINT = process.env.NODE_ENV === 'development'
+  ? "https://wcz3qr33kmjvzotdqt65efniv40kokon.lambda-url.us-east-2.on.aws"
+  : "/api/proxy"; // Using the proxy endpoint in production
 const TIMEOUT_DURATION = 5000;
 
 //Type definations
