@@ -48,31 +48,31 @@ export const TableView: React.FC<TableViewProps> = ({
                   <tr>
                     <th
                       scope="col"
-                      className="px-4 py-3 text-left text-sm font-semibold text-stone-500 whitespace-nowrap"
+                      className="px-4 py-3 text-left text-sm font-semibold text-black whitespace-nowrap"
                     >
                       Name
                     </th>
                     <th
                       scope="col"
-                      className="px-4 py-3 text-left text-sm font-semibold text-stone-500 whitespace-nowrap"
+                      className="px-4 py-3 text-left text-sm font-semibold text-black whitespace-nowrap"
                     >
                       Family
                     </th>
                     <th
                       scope="col"
-                      className="px-4 py-3 text-left text-sm font-semibold text-stone-500 whitespace-nowrap"
+                      className="px-4 py-3 text-left text-sm font-semibold text-black whitespace-nowrap"
                     >
                       Order
                     </th>
                     <th
                       scope="col"
-                      className="px-4 py-3 text-left text-sm font-semibold text-stone-500 whitespace-nowrap"
+                      className="px-4 py-3 text-left text-sm font-semibold text-black whitespace-nowrap"
                     >
                       Genus
                     </th>
                     <th
                       scope="col"
-                      className="px-4 py-3 text-left text-sm font-semibold text-stone-500 whitespace-nowrap"
+                      className="px-4 py-3 text-left text-sm font-semibold text-black whitespace-nowrap"
                     >
                       Calories
                     </th>
@@ -164,31 +164,31 @@ export const TableView: React.FC<TableViewProps> = ({
                       <tr>
                         <th
                           scope="col"
-                          className="px-4 py-3 text-left text-sm font-semibold text-stone-700 whitespace-nowrap"
+                          className="px-4 py-3 text-left text-sm font-semibold text-black whitespace-nowrap"
                         >
                           Name
                         </th>
                         <th
                           scope="col"
-                          className="px-4 py-3 text-left text-sm font-semibold text-stone-700 whitespace-nowrap"
+                          className="px-4 py-3 text-left text-sm font-semibold text-black whitespace-nowrap"
                         >
                           Family
                         </th>
                         <th
                           scope="col"
-                          className="px-4 py-3 text-left text-sm font-semibold text-stone-700 whitespace-nowrap"
+                          className="px-4 py-3 text-left text-sm font-semibold text-black whitespace-nowrap"
                         >
                           Order
                         </th>
                         <th
                           scope="col"
-                          className="px-4 py-3 text-left text-sm font-semibold text-stone-700 whitespace-nowrap"
+                          className="px-4 py-3 text-left text-sm font-semibold text-black whitespace-nowrap"
                         >
                           Genus
                         </th>
                         <th
                           scope="col"
-                          className="px-4 py-3 text-left text-sm font-semibold text-stone-700 whitespace-nowrap"
+                          className="px-4 py-3 text-left text-sm font-semibold text-black whitespace-nowrap"
                         >
                           Calories
                         </th>
