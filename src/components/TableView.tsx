@@ -25,7 +25,7 @@ export const TableView: React.FC<TableViewProps> = ({
       : Object.values(groupedFruits).flat();
 
   return (
-    <div className="table-view pr-2 space-y-4">
+    <div className="table-view px-2 space-y-4">
       {groupBy === "None" ? (
         <div className="mb-6 bg-stone-100 rounded-xl shadow-sm overflow-x-auto">
           <div className="group-header bg-stone-100 pt-4 pb-4 md:p-4 flex justify-between items-center">
@@ -40,74 +40,80 @@ export const TableView: React.FC<TableViewProps> = ({
           </div>
 
           {/* all fruits display */}
-          <div className="inline-block min-w-full align-middle">
-            <table className="min-w-full divide-y divide-stone-300">
-              <thead className="bg-stone-100">
-                <tr>
-                  <th
-                    scope="col"
-                    className="px-4 py-3 text-left text-sm font-semibold text-stone-500"
-                  >
-                    Name
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-4 py-3 text-left text-sm font-semibold text-stone-500"
-                  >
-                    Family
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-4 py-3 text-left text-sm font-semibold text-stone-500"
-                  >
-                    Order
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-4 py-3 text-left text-sm font-semibold text-stone-500"
-                  >
-                    Genus
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-4 py-3 text-left text-sm font-semibold text-stone-500"
-                  >
-                    Calories
-                  </th>
-                  <th scope="col" className="px-4 py-3"></th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-300">
-                {allFruits.map((fruit) => (
-                  <tr key={fruit.name} className="hover:bg-stone-100">
-                    <td className="px-4 py-4 text-sm font-medium text-black">
-                      {fruit.name}
-                    </td>
-                    <td className="px-4 py-4 text-sm font-medium text-black">
-                      {fruit.family}
-                    </td>
-                    <td className="px-4 py-4 text-sm font-medium text-black">
-                      {fruit.order}
-                    </td>
-                    <td className="px-4 py-4 text-sm font-medium text-black">
-                      {fruit.genus}
-                    </td>
-                    <td className="px-4 py-4 text-sm font-medium text-black">
-                      {fruit.nutritions.calories}
-                    </td>
-                    <td className="px-4 py-4 text-right">
-                      <button
-                        onClick={() => onAddFruit(fruit)}
-                        className="px-3 py-1 bg-stone-300 text-black text-sm font-bold rounded-lg 
-                                 transition-all duration-200 active:scale-95 hover:bg-stone-400"
-                      >
-                        Add
-                      </button>
-                    </td>
+
+          <div className="overflow-x-auto">
+            <div className="inline-block min-w-full align-middle">
+              <table className="min-w-full divide-y divide-stone-300">
+                <thead className="bg-stone-100">
+                  <tr>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-sm font-semibold text-stone-500 whitespace-nowrap"
+                    >
+                      Name
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-sm font-semibold text-stone-500 whitespace-nowrap"
+                    >
+                      Family
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-sm font-semibold text-stone-500 whitespace-nowrap"
+                    >
+                      Order
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-sm font-semibold text-stone-500 whitespace-nowrap"
+                    >
+                      Genus
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 text-left text-sm font-semibold text-stone-500 whitespace-nowrap"
+                    >
+                      Calories
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-4 py-3 whitespace-nowrap"
+                    ></th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-stone-300">
+                  {allFruits.map((fruit) => (
+                    <tr key={fruit.name} className="hover:bg-stone-100">
+                      <td className="px-4 py-4 text-sm font-medium text-black">
+                        {fruit.name}
+                      </td>
+                      <td className="px-4 py-4 text-sm font-medium text-black">
+                        {fruit.family}
+                      </td>
+                      <td className="px-4 py-4 text-sm font-medium text-black">
+                        {fruit.order}
+                      </td>
+                      <td className="px-4 py-4 text-sm font-medium text-black">
+                        {fruit.genus}
+                      </td>
+                      <td className="px-4 py-4 text-sm font-medium text-black">
+                        {fruit.nutritions.calories}
+                      </td>
+                      <td className="px-4 py-4 text-right">
+                        <button
+                          onClick={() => onAddFruit(fruit)}
+                          className="px-3 py-1 bg-stone-300 text-black text-sm font-bold rounded-lg 
+                                 transition-all duration-200 active:scale-95 hover:bg-stone-400"
+                        >
+                          Add
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       ) : (
@@ -151,74 +157,79 @@ export const TableView: React.FC<TableViewProps> = ({
             </div>
             {/* Collapsible table with groups */}
             <div className={`${isCollapsed[group] ? "hidden" : ""}`}>
-              <div className="inline-block min-w-full align-middle">
-                <table className="min-w-full divide-y divide-stone-300">
-                  <thead className="bg-stone-100">
-                    <tr>
-                      <th
-                        scope="col"
-                        className="px-4 py-3 text-left text-sm font-semibold text-stone-700"
-                      >
-                        Name
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-4 py-3 text-left text-sm font-semibold text-stone-700"
-                      >
-                        Family
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-4 py-3 text-left text-sm font-semibold text-stone-700"
-                      >
-                        Order
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-4 py-3 text-left text-sm font-semibold text-stone-700"
-                      >
-                        Genus
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-4 py-3 text-left text-sm font-semibold text-stone-700"
-                      >
-                        Calories
-                      </th>
-                      <th scope="col" className="px-4 py-3"></th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-stone-300">
-                    {fruits.map((fruit) => (
-                      <tr key={fruit.name} className="hover:bg-stone-100">
-                        <td className="px-4 py-4 text-sm font-medium text-black">
-                          {fruit.name}
-                        </td>
-                        <td className="px-4 py-4 text-sm font-medium text-black">
-                          {fruit.family}
-                        </td>
-                        <td className="px-4 py-4 text-sm font-medium text-black">
-                          {fruit.order}
-                        </td>
-                        <td className="px-4 py-4 text-sm font-medium text-black">
-                          {fruit.genus}
-                        </td>
-                        <td className="px-4 py-4 text-sm font-medium text-black">
-                          {fruit.nutritions.calories}
-                        </td>
-                        <td className="px-4 py-4 text-right">
-                          <button
-                            onClick={() => onAddFruit(fruit)}
-                            className="px-3 py-1 bg-stone-300 text-black text-sm font-bold rounded-lg 
-                                     transition-all duration-200 active:scale-95 hover:bg-stone-400"
-                          >
-                            Add
-                          </button>
-                        </td>
+              <div className="overflow-x-auto">
+                <div className="inline-block min-w-full align-middle">
+                  <table className="min-w-full divide-y divide-stone-300">
+                    <thead className="bg-stone-100">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="px-4 py-3 text-left text-sm font-semibold text-stone-700 whitespace-nowrap"
+                        >
+                          Name
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3 text-left text-sm font-semibold text-stone-700 whitespace-nowrap"
+                        >
+                          Family
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3 text-left text-sm font-semibold text-stone-700 whitespace-nowrap"
+                        >
+                          Order
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3 text-left text-sm font-semibold text-stone-700 whitespace-nowrap"
+                        >
+                          Genus
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3 text-left text-sm font-semibold text-stone-700 whitespace-nowrap"
+                        >
+                          Calories
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-4 py-3 whitespace-nowrap"
+                        ></th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-stone-300">
+                      {fruits.map((fruit) => (
+                        <tr key={fruit.name} className="hover:bg-stone-100">
+                          <td className="px-4 py-4 text-sm font-medium text-black">
+                            {fruit.name}
+                          </td>
+                          <td className="px-4 py-4 text-sm font-medium text-black">
+                            {fruit.family}
+                          </td>
+                          <td className="px-4 py-4 text-sm font-medium text-black">
+                            {fruit.order}
+                          </td>
+                          <td className="px-4 py-4 text-sm font-medium text-black">
+                            {fruit.genus}
+                          </td>
+                          <td className="px-4 py-4 text-sm font-medium text-black">
+                            {fruit.nutritions.calories}
+                          </td>
+                          <td className="px-4 py-4 text-right">
+                            <button
+                              onClick={() => onAddFruit(fruit)}
+                              className="px-3 py-1 bg-stone-300 text-black text-sm font-bold rounded-lg 
+                                     transition-all duration-200 active:scale-95 hover:bg-stone-400"
+                            >
+                              Add
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>

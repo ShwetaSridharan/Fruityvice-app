@@ -54,63 +54,63 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-stone-100 to-stone-300 p-4 md:p-8">
-      <div className="max-w-7xl mx-auto">
+    <main role="main">
+      <div className="min-h-screen bg-gradient-to-br from-stone-100 to-stone-300 p-4 md:p-8">
+        <div className="max-w-7xl mx-auto">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center tracking-tight">
+            FRUITYVICE
+          </h1>
 
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center tracking-tight">
-          FRUITYVICE
-        </h1>
+          <div className="flex flex-col lg:flex-row gap-6 lg:h-[1000px] lg:min-h-[1000px] min-h-[700px]">
+            {/* Left section of the app */}
+            <div className="left-section h-[700px] lg:h-[1000px] bg-stone-100 rounded-2xl w-full  lg:w-3/5 flex flex-col  lg:min-h-0 border-2 border-stone-500">
+              <div className="rounded-2xl shadow-lg p-4 md:p-6 h-full flex flex-col">
+                <div className="flex-none mb-6">
+                  <label
+                    htmlFor="groupBySelect"
+                    className="block text-base font-bold text-black mb-2"
+                  >
+                    Group By:
+                  </label>
+                  <Select
+                    id="groupBySelect"
+                    isSearchable={false}
+                    options={[
+                      { value: "None", label: "None" },
+                      { value: "family", label: "family" },
+                      { value: "order", label: "order" },
+                      { value: "genus", label: "genus" },
+                    ]}
+                    value={{ value: groupBy, label: groupBy }}
+                    onChange={(selectedOption) => {
+                      if (selectedOption) {
+                        setGroupBy(selectedOption.value);
+                      }
+                    }}
+                    styles={selectStyles}
+                    className="w-full"
+                  />
+                </div>
 
-        <div className="flex flex-col lg:flex-row gap-6 xl:h-[1000px]">
-          
-          {/* Left section of the app */}
-          <div className="left-section bg-stone-100 rounded-2xl w-full lg:w-3/5 flex flex-col min-h-[1000px] lg:min-h-0 border-2 border-stone-500">
-            <div className="rounded-2xl shadow-lg p-4 md:p-6 h-full flex flex-col">
-              <div className="flex-none mb-6">
-                <label
-                  htmlFor="groupBySelect"
-                  className="block text-base font-bold text-black mb-2"
-                >
-                  Group By:
-                </label>
-                <Select
-                  id="groupBySelect"
-                  options={[
-                    { value: "None", label: "None" },
-                    { value: "family", label: "family" },
-                    { value: "order", label: "order" },
-                    { value: "genus", label: "genus" },
-                  ]}
-                  value={{ value: groupBy, label: groupBy }}
-                  onChange={(selectedOption) => {
-                    if (selectedOption) {
-                      setGroupBy(selectedOption.value);
-                    }
-                  }}
-                  styles={selectStyles}
-                  
-                  className="w-full"
-                />
-              </div>
-
-              <div className="flex-1 overflow-hidden">
-                <FruitList
-                  groupBy={groupBy}
-                  setGroupBy={setGroupBy}
-                  onAddFruit={handleAddFruit}
-                  onAddGroup={handleAddGroup}
-                />
+                <div className="flex-1 overflow-hidden">
+                  <FruitList
+                    groupBy={groupBy}
+                    setGroupBy={setGroupBy}
+                    onAddFruit={handleAddFruit}
+                    onAddGroup={handleAddGroup}
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Right section of the app*/}
-          <div className="right-section w-full lg:w-2/5 flex flex-col min-h-[1000px] lg:min-h-0">
-            <FruitJar fruits={jarFruits} />
+            {/* Right section of the app*/}
+            <div className="right-section h-[700px] lg:h-[1000px] w-full lg:w-2/5 flex flex-col  lg:min-h-0">
+              <FruitJar fruits={jarFruits} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

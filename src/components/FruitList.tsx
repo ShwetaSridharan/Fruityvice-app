@@ -104,7 +104,6 @@ const FruitList: React.FC<FruitListProps> = ({
     () =>
       groupBy !== "None"
         ? fruits.reduce((acc: Record<string, Fruit[]>, fruit) => {
-            // Get the property value and capitalize first letter
             const propertyValue = fruit[groupBy.toLowerCase() as keyof Fruit] as string;
             const key = propertyValue.charAt(0).toUpperCase() + propertyValue.slice(1);
             acc[key] = [...(acc[key] || []), fruit];
@@ -137,13 +136,17 @@ const FruitList: React.FC<FruitListProps> = ({
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center h-full p-8">
-        <div className="text-stone-600 mb-6 text-center">
+      <div 
+        role="alert" 
+        className="flex flex-col items-center justify-center h-full p-8"
+      >
+        <div className="text-stone-700 mb-6 text-center">
           <svg
             className="w-12 h-12 mx-auto mb-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               strokeLinecap="round"
@@ -152,8 +155,8 @@ const FruitList: React.FC<FruitListProps> = ({
               d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <p className="text-lg font-medium">{error}</p>
-          <p className="text-sm text-stone-500 mt-2">
+          <p className="text-lg font-medium text-stone-700">{error}</p>
+          <p className="text-sm text-stone-700 mt-2">
             {process.env.NODE_ENV === 'development' 
               ? 'Check the console for more details' 
               : 'Please try again later'}
@@ -161,14 +164,15 @@ const FruitList: React.FC<FruitListProps> = ({
         </div>
         <button
           onClick={handleRetry}
-          className="px-4 py-2 bg-stone-300 text-black font-bold rounded-lg 
-                   transition-all duration-200 active:scale-95 hover:bg-stone-400"
+          className="px-4 py-2 bg-stone-600 text-white font-bold rounded-lg 
+                   transition-all duration-200 active:scale-95 hover:bg-stone-700"
+          aria-label="Retry loading fruits"
         >
           Try Again
         </button>
       </div>
     );
-  }
+}
 
   return (
     <div className="h-full flex flex-col overflow-hidden">

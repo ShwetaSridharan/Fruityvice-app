@@ -30,30 +30,35 @@ export const ListView: React.FC<ListViewProps> = ({
           className="mb-6 bg-stone-100 rounded-xl shadow-sm overflow-hidden"
         >
           <div
-            className="group-header bg-stone-100 pt-4 pb-4 md:p-4 flex justify-between items-center cursor-pointer hover:bg-stone-100 transition-colors"
-            onClick={() => onToggleGroup(group)}
+            className={`group-header bg-stone-100 pt-4 pb-4 md:p-4 flex justify-between items-center ${
+              group !== "All Fruits"
+                ? "cursor-pointer hover:bg-stone-100 transition-colors"
+                : ""
+            }`}
+            onClick={() => group !== "All Fruits" && onToggleGroup(group)}
           >
             <div className="flex items-center gap-0 md:gap-2">
-              <svg
-                className={`w-5 h-5 transition-transform duration-200 ${
-                  isCollapsed[group] ? "rotate-180" : ""
-                }`}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              {group !== "All Fruits" && (
+                <svg
+                  className={`w-5 h-5 transition-transform duration-200 ${
+                    isCollapsed[group] ? "rotate-180" : ""
+                  }`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              )}
               <span className="font-bold text-lg text-black">{group}</span>
             </div>
-            {/* Add All/Group button */}
             <button
               className="px-3 py-1.5 bg-stone-300 text-black font-bold rounded-lg 
-                        transition-all duration-200 active:scale-95 text-xs md:text-sm hover:bg-stone-400"     
+                      transition-all duration-200 active:scale-95 text-xs md:text-sm hover:bg-stone-400"
               onClick={(e) => {
                 e.stopPropagation();
                 onAddGroup(fruits);
@@ -65,7 +70,7 @@ export const ListView: React.FC<ListViewProps> = ({
 
           <ul
             className={`divide-y divide-stone-200 ${
-              isCollapsed[group] ? "hidden" : ""
+              group !== "All Fruits" && isCollapsed[group] ? "hidden" : ""
             }`}
           >
             {fruits.map((fruit) => (
@@ -82,8 +87,8 @@ export const ListView: React.FC<ListViewProps> = ({
                   </div>
                   <button
                     className="px-3 py-1.5 bg-stone-300 text-black font-bold
-                             rounded-lg transition-all duration-200 active:scale-95 text-xs md:text-sm  hover:bg-stone-400
-                             whitespace-nowrap ml-4"
+                           rounded-lg transition-all duration-200 active:scale-95 text-xs md:text-sm  hover:bg-stone-400
+                           whitespace-nowrap ml-4"
                     onClick={() => onAddFruit(fruit)}
                   >
                     Add
