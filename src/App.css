@@ -3,6 +3,10 @@
   font-family: 'Cabinet Grotesk', sans-serif;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 html {
   overflow: hidden;
   height: 100%;

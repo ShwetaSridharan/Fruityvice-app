@@ -38,7 +38,13 @@ const App: React.FC = () => {
       color: "rgb(0 0 0)",
       fontWeight: "500",
       cursor: "pointer",
-      "&:active": { backgroundColor: "d6d3d1" },
+      "&:active": { backgroundColor: "#d6d3d1" },
+      WebkitTapHighlightColor: "transparent",
+      WebkitTouchCallout: "none",
+      WebkitUserSelect: "none",
+      MozUserSelect: "none",
+      msUserSelect: "none",
+      userSelect: "none",
     }),
     singleValue: (base: any) => ({
       ...base,
@@ -75,6 +81,7 @@ const App: React.FC = () => {
                   <Select
                     id="groupBySelect"
                     isSearchable={false}
+                    
                     options={[
                       { value: "None", label: "None" },
                       { value: "family", label: "family" },
