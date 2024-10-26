@@ -137,7 +137,10 @@ const FruitJar: React.FC<FruitJarProps> = ({ fruits }) => {
           <div className="flex-none mb-4">
             <div className="w-[220px] h-[220px] mx-auto relative pie-chart-container">
               <PieChart
-                data={pieData}
+                data={pieData.map((segment) => ({
+                  ...segment,
+                  title: "", // This will prevent the default tooltip
+                }))}
                 animate
                 animationDuration={500}
                 center={[50, 50]}
