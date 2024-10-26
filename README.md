@@ -1,46 +1,119 @@
-# Getting Started with Create React App
+Fruityvice App
+--------------
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React TypeScript application that displays and organizes fruit data from the Fruityvice API. Users can view fruits in both list and table views, group them by different categories, and add them to a virtual fruit jar.
 
-## Available Scripts
+Features
+--------
 
-In the project directory, you can run:
+-   Data Visualization: View fruits in both list and table formats.
+-   Grouping Options: Group fruits by family, order, or genus.
+-   Interactive UI: Add individual fruits or entire groups to a fruit jar. Hover/click over the pie chart to view individual fruits with their calories highlighted.
+-   Responsive Design: Works seamlessly across desktop and mobile devices.
+-   Collapsible Groups: Easily manages large datasets with collapsible sections.
+-   Error Handling: Comprehensive error handling with user-friendly messages has been employed.
 
-### `npm start`
+Live Demo
+---------
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[View the live application](https://fruityvice-app.vercel.app)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Technologies Used
+-----------------
 
-### `npm test`
+-   React 18
+-   TypeScript
+-   Tailwind CSS
+-   React Select
+-   Axios
+-   Vercel (deployment)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Prerequisites
+-------------
 
-### `npm run build`
+-   Node.js (v14 or higher)
+-   npm or yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Installation
+------------
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1.  Clone the repository:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+bash
 
-### `npm run eject`
+`git clone https://github.com/your-username/fruityvice-app.git cd fruityvice-app `
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2.  Install dependencies:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+bash
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`npm  install  `
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3.  Start the development server:
 
-## Learn More
+bash
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`npm start `
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The application will be available at `http://localhost:3000`
+
+Building for Production
+-----------------------
+
+bash
+
+`npm run build `
+
+Deployment
+----------
+
+The application is configured for deployment on Vercel. Simply push to the main branch or connect your GitHub repository to Vercel for automatic deployments.
+
+
+Key Features Implementation
+---------------------------
+
+Grouping Functionality
+----------------------
+
+-   Select from different grouping options (None, Family, Order, Genus).
+-   Collapsible groups for better organization.
+-   Add entire groups to the fruit jar.
+
+Views
+-----
+
+-   List View: Compact, easy-to-read format.
+-   Table View: Detailed information with columns.
+-   Responsive design adapts to screen size.
+
+Fruit Jar
+---------
+
+-   Add individual fruits or groups of fruits.
+-   Visual representation of selected fruits and their calories in a pie chart.
+-   Persistent state during session.
+-   Hover/Click over pie chart for fruit name and calories.
+
+Error Handling
+--------------
+
+The application includes comprehensive error handling for:
+
+-   API failures
+-   Network issues
+-   Invalid data
+-   Loading states
+
+Browser Support
+---------------
+
+-   Chrome (latest)
+-   Firefox (latest)
+-   Safari (latest)
+-   Edge (latest)
+
+License
+-------
+
+This project is licensed under the MIT License - see the LICENSE file for details.
