@@ -11,6 +11,8 @@ import { Fruit } from "./Fruit";
 const App: React.FC = () => {
   const [groupBy, setGroupBy] = useState("None"); // State for managing the current grouping selection (None, family, order, or genus)-Initialize with "None" as default value
   const [jarFruits, setJarFruits] = useState<Fruit[]>([]); // State for managing the fruits added to the jar- Initialize as an empty array of Fruit type
+  const [searchTerm, setSearchTerm] = useState("");
+ 
 
   //Handlers for adding fruits
   const handleAddFruit = (fruit: Fruit) => {
@@ -19,6 +21,7 @@ const App: React.FC = () => {
   const handleAddGroup = (fruits: Fruit[]) => {
     setJarFruits([...jarFruits, ...fruits]);
   }; //Group of fruits
+ 
 
   //Styles for the Grouping Selection
   const selectStyles = {
@@ -81,7 +84,6 @@ const App: React.FC = () => {
                   <Select
                     id="groupBySelect"
                     isSearchable={false}
-                    
                     options={[
                       { value: "None", label: "None" },
                       { value: "family", label: "family" },
@@ -98,6 +100,17 @@ const App: React.FC = () => {
                     className="w-full"
                   />
                 </div>
+              
+                {/* search bar */}
+                <div className="flex-none mb-6">
+                  <input
+                    type="text"
+                    placeholder="Search fruits..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full p-2 rounded-xl border border-stone-400 bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-400"
+                  />
+                </div>
 
                 <div className="flex-1 overflow-hidden">
                   <FruitList
@@ -105,6 +118,7 @@ const App: React.FC = () => {
                     setGroupBy={setGroupBy}
                     onAddFruit={handleAddFruit}
                     onAddGroup={handleAddGroup}
+                    searchTerm={searchTerm}
                   />
                 </div>
               </div>

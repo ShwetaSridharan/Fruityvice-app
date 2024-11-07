@@ -24,6 +24,7 @@ interface FruitListProps {
   setGroupBy: (groupBy: string) => void;
   onAddFruit: (fruit: Fruit) => void;
   onAddGroup: (fruits: Fruit[]) => void;
+  searchTerm: string;
 }
 
 // Loading Skeleton- utility component
@@ -44,6 +45,7 @@ const FruitList: React.FC<FruitListProps> = ({
   setGroupBy,
   onAddFruit,
   onAddGroup,
+  searchTerm,
 }) => {
   //state management
   const [fruits, setFruits] = useState<Fruit[]>([]);
@@ -100,18 +102,22 @@ const FruitList: React.FC<FruitListProps> = ({
   }, [retryCount]);
 
   //Memoized grouped fruits
-  const groupedFruits = useMemo(
-    () =>
-      groupBy !== "None"
-        ? fruits.reduce((acc: Record<string, Fruit[]>, fruit) => {
-            const propertyValue = fruit[groupBy.toLowerCase() as keyof Fruit] as string;
-            const key = propertyValue.charAt(0).toUpperCase() + propertyValue.slice(1);
-            acc[key] = [...(acc[key] || []), fruit];
-            return acc;
-          }, {})
-        : { "All Fruits": fruits },
-    [fruits, groupBy]
-  );
+  const groupedFruits = useMemo(() => {
+    // First filter the fruits based on search term
+    const filteredFruits = fruits.filter(fruit => 
+      fruit.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  
+    // Then group the filtered fruits
+    return groupBy !== "None"
+      ? filteredFruits.reduce((acc: Record<string, Fruit[]>, fruit) => {
+          const propertyValue = fruit[groupBy.toLowerCase() as keyof Fruit] as string;
+          const key = propertyValue.charAt(0).toUpperCase() + propertyValue.slice(1);
+          acc[key] = [...(acc[key] || []), fruit];
+          return acc;
+        }, {})
+      : { "All Fruits": filteredFruits };
+  }, [fruits, groupBy, searchTerm]); // Add searchTerm to dependencies
 
   //event handlers
   const handleRetry = () => {

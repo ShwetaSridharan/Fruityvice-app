@@ -139,7 +139,7 @@ const FruitJar: React.FC<FruitJarProps> = ({ fruits }) => {
               <PieChart
                 data={pieData.map((segment) => ({
                   ...segment,
-                  title: "", // This will prevent the default tooltip
+                  title: "", 
                 }))}
                 animate
                 animationDuration={500}
