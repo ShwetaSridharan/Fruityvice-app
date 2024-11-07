@@ -45,7 +45,7 @@ const FruitList: React.FC<FruitListProps> = ({
   setGroupBy,
   onAddFruit,
   onAddGroup,
-  searchTerm,
+  searchTerm,  //Added the state to update fruitlist
 }) => {
   //state management
   const [fruits, setFruits] = useState<Fruit[]>([]);
@@ -103,12 +103,12 @@ const FruitList: React.FC<FruitListProps> = ({
 
   //Memoized grouped fruits
   const groupedFruits = useMemo(() => {
-    // First filter the fruits based on search term
+    //Filter fruits based on search term (fruit)
     const filteredFruits = fruits.filter(fruit => 
       fruit.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
   
-    // Then group the filtered fruits
+    //Grouping the filtered fruits
     return groupBy !== "None"
       ? filteredFruits.reduce((acc: Record<string, Fruit[]>, fruit) => {
           const propertyValue = fruit[groupBy.toLowerCase() as keyof Fruit] as string;
